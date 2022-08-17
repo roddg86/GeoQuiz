@@ -47,9 +47,16 @@ class MainActivity : AppCompatActivity() {
 
         /* Слушатель для кнопки Next */
         nextButton.setOnClickListener { view: View ->
-            currentIndex = (currentIndex + 1) % questionBank.size
+            nextQuestion()
             updateQuestion()
         }
+
+        /* слушатель для TextView */
+        questionTextView.setOnClickListener { view: View ->
+            nextQuestion()
+            updateQuestion()
+        }
+
         updateQuestion()
     }
 
@@ -75,5 +82,10 @@ class MainActivity : AppCompatActivity() {
             R.string.incorrect_toast
         }
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show()
+    }
+
+    /* функция следующего вопроса */
+    private fun nextQuestion(){
+        currentIndex = (currentIndex + 1) % questionBank.size
     }
 }
