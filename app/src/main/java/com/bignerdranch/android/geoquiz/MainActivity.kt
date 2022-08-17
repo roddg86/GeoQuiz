@@ -2,6 +2,7 @@ package com.bignerdranch.android.geoquiz
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 
 /* AppCompatActivity Это подкласс, наследующий от класса Android Activity и
@@ -21,5 +22,15 @@ class MainActivity : AppCompatActivity() {
         /* Ищем и назначаем обьектам представления соответствующие свойства */
         trueButton = findViewById(R.id.true_button)
         falseButton = findViewById(R.id.false_button)
+
+        /* Слушатель щелчок кнопки */
+        trueButton.setOnClickListener { view: View ->
+            // Блок выполнения кода после нажантия
+        }
+
+        /* Слушатель для кнопки FALSE */
+        falseButton.setOnClickListener { view: View ->
+            //Блок выполнения кода после нажатия
+        }
     }
 }
