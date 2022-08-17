@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var trueButton: Button
     private lateinit var falseButton: Button
     private lateinit var nextButton: Button
+    private lateinit var prevButton: Button
     private lateinit var questionTextView: TextView
 
     /* Создадим список обьектов вопросов */
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         trueButton = findViewById(R.id.true_button)
         falseButton = findViewById(R.id.false_button)
         nextButton = findViewById(R.id.next_button)
+        prevButton = findViewById(R.id.prev_button)
         questionTextView = findViewById(R.id.question_text_view)
 
         trueButton.setOnClickListener { view: View ->
@@ -48,6 +50,12 @@ class MainActivity : AppCompatActivity() {
         /* Слушатель для кнопки Next */
         nextButton.setOnClickListener { view: View ->
             nextQuestion()
+            updateQuestion()
+        }
+
+        /* Добавление кнопки возврата */
+        prevButton.setOnClickListener { viev: View ->
+            prevQuestion()
             updateQuestion()
         }
 
@@ -85,7 +93,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     /* функция следующего вопроса */
-    private fun nextQuestion(){
+    private fun nextQuestion() {
         currentIndex = (currentIndex + 1) % questionBank.size
+    }
+
+    /* функция возвращение к предыдущему вопросу */
+    private fun prevQuestion() {
+        currentIndex = (currentIndex - 1) % questionBank.size
     }
 }
