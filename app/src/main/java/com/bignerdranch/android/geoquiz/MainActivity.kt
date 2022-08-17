@@ -52,10 +52,13 @@ class MainActivity : AppCompatActivity() {
         /* Слушатель для кнопки Next */
         nestButton.setOnClickListener { view: View ->
             currentIndex = (currentIndex + 1) % questionBank.size
-            val questionTextResId = questionBank[currentIndex].textResId
-            questionTextView.setText(questionTextResId)
+            updateQuestion()
         }
+        updateQuestion()
+    }
 
+    /* Инкапсуляция с помощью функции */
+    private fun updateQuestion(){
         /* Отобразим вопрос из списка */
         val questionTextResId = questionBank[currentIndex].textResId
         questionTextView.setText(questionTextResId)
