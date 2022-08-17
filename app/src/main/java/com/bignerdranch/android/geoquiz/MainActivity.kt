@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var trueButton: Button
     private lateinit var falseButton: Button
-    private lateinit var nestButton: Button
+    private lateinit var nextButton: Button
     private lateinit var questionTextView: TextView
 
     /* Создадим список обьектов вопросов */
@@ -34,23 +34,19 @@ class MainActivity : AppCompatActivity() {
 
         trueButton = findViewById(R.id.true_button)
         falseButton = findViewById(R.id.false_button)
-        nestButton = findViewById(R.id.next_button)
+        nextButton = findViewById(R.id.next_button)
         questionTextView = findViewById(R.id.question_text_view)
 
         trueButton.setOnClickListener { view: View ->
-            val toast = Toast.makeText(this, R.string.correct_toast, Toast.LENGTH_SHORT)
-            toast.setGravity(Gravity.TOP, 0, 160)
-            toast.show()
+            checkAnswer(true)
         }
 
         falseButton.setOnClickListener { view: View ->
-            val toast = Toast.makeText(this, R.string.incorrect_toast, Toast.LENGTH_SHORT)
-            toast.setGravity(Gravity.TOP or Gravity.LEFT, 0, 160)
-            toast.show()
+            checkAnswer(false)
         }
 
         /* Слушатель для кнопки Next */
-        nestButton.setOnClickListener { view: View ->
+        nextButton.setOnClickListener { view: View ->
             currentIndex = (currentIndex + 1) % questionBank.size
             updateQuestion()
         }
@@ -58,9 +54,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     /* Инкапсуляция с помощью функции */
-    private fun updateQuestion(){
+    private fun updateQuestion() {
         /* Отобразим вопрос из списка */
         val questionTextResId = questionBank[currentIndex].textResId
         questionTextView.setText(questionTextResId)
+    }
+
+    /* Функция получает логическую переменную, которая
+    указывает, какую кнопку нажал пользователь: TRUE или FALSE.
+    Ответ пользователя проверяется по ответу текущего объекта
+    Question. Наконец, после определения правильности ответа
+    функция создает Toast для вывода соответствующего
+    сообщения. */
+    private fun checkAnswer(userAnswer: Boolean) {
+        val correctAnswer = questionBank[currentIndex].answer
+
+        val messageResId = if (userAnswer == correctAnswer) {
+            R.string.correct_toast
+        } else {
+            R.string.incorrect_toast
+        }
+        Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show()
     }
 }
