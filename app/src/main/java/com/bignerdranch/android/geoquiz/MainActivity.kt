@@ -30,6 +30,9 @@ class MainActivity : AppCompatActivity() {
         ViewModelProviders.of(this).get(QuizViewModel::class.java)
     }
 
+    /* Это передает действие менеджеру Activity для получения результата Activity
+    поскольку startActivityForResult устарел
+    */
     private val getResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
