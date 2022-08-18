@@ -10,6 +10,10 @@
     <string name="false_button">False</string>
     <string name="correct_toast">Correct!</string>
     <string name="incorrect_toast">Incorrect!</string>
+    <string name="warning_text">Ты уверен, что хочешь это сделать?</string>
+    <string name="show_answer_button">Показать Ответ</string>
+    <string name="cheat_button">Cheat!</string>
+    <string name="judgment_toast">Обманывать - это неправильно.</string>
     <string name="next_button">Next</string>
     <string name="prev_button">Prev</string>
 </resources>
