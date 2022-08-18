@@ -1,5 +1,6 @@
 package com.bignerdranch.android.geoquiz
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         /* Проверка наборов в OnCreate */
-        val currentIndex = savedInstanceState?.getInt(KEY_INDEX,0)?:0
+        val currentIndex = savedInstanceState?.getInt(KEY_INDEX, 0) ?: 0
         quizViewModel.currentIndex = currentIndex
 
         /* Cвяжем activity с экземпляром QuizViewModel. */
@@ -60,8 +61,10 @@ class MainActivity : AppCompatActivity() {
             updateQuestion()
         }
 
+        /* Запуск второй активити */
         cheatButton.setOnClickListener {
-            // Начало CheatActivity
+            val intent = Intent(this, CheatActivity::class.java)
+            startActivity(intent)
         }
 
         updateQuestion()
@@ -88,7 +91,7 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
         super.onSaveInstanceState(savedInstanceState)
         Log.i(TAG, "onSaveInstanceState")
-        savedInstanceState.putInt(KEY_INDEX,quizViewModel.currentIndex)
+        savedInstanceState.putInt(KEY_INDEX, quizViewModel.currentIndex)
     }
 
     override fun onStop() {
