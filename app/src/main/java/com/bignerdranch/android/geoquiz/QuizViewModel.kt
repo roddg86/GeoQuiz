@@ -10,6 +10,7 @@ private const val TAG = "QuizViewModel"
 /* ViewModel хранит все данные, связанные с потребностями экрана */
 class QuizViewModel : ViewModel() {
     var currentIndex = 0
+    var isCheater = false
 
     private val questionBank = listOf(
         Question(R.string.question_australia, true),
