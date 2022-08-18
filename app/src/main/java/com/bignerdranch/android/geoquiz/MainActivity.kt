@@ -77,7 +77,9 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onPause() called")
     }
 
-    /* Переопределение onSaveInstanceState */
+    /* Переопределение onSaveInstanceState, для того чтобы чтобы она
+    собирала небольшие переходные данные, относящиеся к текущей activity
+    Сохраненное состояние экземпляра*/
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
         super.onSaveInstanceState(savedInstanceState)
         Log.i(TAG, "onSaveInstanceState")
