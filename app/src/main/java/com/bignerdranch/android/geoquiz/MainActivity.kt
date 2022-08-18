@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
         /* Обновление вопроса через QuizViewModel */
         nextButton.setOnClickListener {
-            // quizViewModel.moveToNext()
+            quizViewModel.moveToNext()
             updateQuestion()
         }
 
@@ -97,10 +97,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateQuestion() {
-        /* В журнале будет сохранена информация о том, где было создано исключение.
-        Exception() - создать новый экземпляр Exception и передать его функции
-        */
-        Log.d(TAG, "Updating question text", Exception())
         val questionTextResId = quizViewModel.currentQuestionText
         questionTextView.setText(questionTextResId)
     }
