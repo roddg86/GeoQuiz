@@ -3,6 +3,7 @@ package com.bignerdranch.android.geoquiz
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -26,6 +27,11 @@ class CheatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cheat)
+
+        /* Отобразим версию API во второй активити */
+        val apiLevel : TextView = findViewById(R.id.api_level)
+        val buildNumber = Build.VERSION.SDK_INT.toString()
+        apiLevel.text = getString(R.string.api_level, buildNumber)
 
         /* чтения значения из дополнения */
         answerIsTrue = intent.getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false)
